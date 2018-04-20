@@ -15,6 +15,8 @@
 }
 
 </style>
+<h1> Brush minimum width 100px, maximum width 100px.</h1>
+<p><a href="d3.v4.js">Modified d3.v4.js</a></p>
 <svg width="960" height="500"></svg>
 <script src="d3.v4.js"></script>
 <script>
@@ -41,7 +43,7 @@ var brush = d3.brushX()
     .extent([[0, 0], [width, height2]])
     .on("brush end", brushed);
 
-brush.limit([100]);
+brush.limit([100, 200]);
 
 var zoom = d3.zoom()
     .scaleExtent([1, Infinity])
@@ -110,7 +112,7 @@ d3.csv("sp500.csv", type, function(error, data) {
   context.append("g")
       .attr("class", "brush")
       .call(brush)
-      .call(brush.move, x.range());
+      .call(brush.move, [150, 250]);
 
   svg.append("rect")
       .attr("class", "zoom")
